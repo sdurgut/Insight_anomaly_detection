@@ -105,17 +105,26 @@ def get_friendList(id, friendMatrix, friendList, DEGREES_OF_FREEDOM):
 			idx +=1
 	return friendList
 
-######################################################
-######################################################
-# open the batch_log file and store it as batch_log  #
-######################################################
-######################################################
+
+
+
+
+
+
+
+
 data_file_name = sys.argv[1]
 stream_file_name = sys.argv[2]
 output_file_name = sys.argv[3]
 email_file_name = sys.argv[4]
 
 #print(data_file_name,stream_file_name,output_file_name)
+
+######################################################
+######################################################
+# open the batch_log file and store it as batch_log  #
+######################################################
+######################################################
 
 print("Opening the data file...")
 data_file = open(data_file_name, "r")
@@ -197,7 +206,7 @@ for dic in stream_log:
 			friendListtobeEmailed.append(int(dic["id"]))
 			friendListtobeEmailed = get_friendList(int(dic["id"]),friendMatrix,friendListtobeEmailed,DEGREES_OF_FREEDOM)
 			del friendListtobeEmailed[0]
-			print("Writing  email list to a txt file")
+			print("Writing  the email list from user ", dic["id"], "to a txt file.")
 			output_file_for_friends.write("\nBuyer: " + dic["id"] + " Time Stamp: " + dic["timestamp"] + " Amount: "+ dic["amount"] + " Email List: ")
 			for x in friendListtobeEmailed:
 				output_file_for_friends.write( str(x) + " ")
